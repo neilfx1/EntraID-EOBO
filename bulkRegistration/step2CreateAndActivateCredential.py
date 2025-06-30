@@ -43,13 +43,29 @@ from ykman import scripting as s
 
 import requests
 import urllib3
-from fido2.client import Fido2Client, UserInteraction, WindowsClient
+from fido2.client import Fido2Client, UserInteraction
 from fido2.ctap2.extensions import CredProtectExtension
 from fido2.hid import CtapHidDevice
 from fido2.utils import websafe_decode, websafe_encode
 from fido2.ctap2 import Ctap2, Config
 from fido2.ctap import CtapError
 from fido2.ctap2.pin import ClientPin
+
+try:
+    from fido2.client import WindowsClient
+except ImportError:
+    WINDOWS_CLIENT_AVAILABLE = False
+
+    class WindowsClient:
+        @staticmethod
+        def is_available():
+            return False
+else:
+    WINDOWS_CLIENT_AVAILABLE = True
+
+if not ctypes.windll.shell32.IsUserAnAdmin():
+    print("ERROR: This script must be run as Administrator.")
+    sys.exit(1)
 
 # Disabling warnings that get produced when certificate stores aren't updated
 # to check certificate validity.
