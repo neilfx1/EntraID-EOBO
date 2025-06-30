@@ -1,7 +1,14 @@
-# entra-Id-register-passkeys-on-behalf-of-users
-- This project will use Microsoft Graph APIs to provision FIDO2 credentials on a FIDO2 security key. 
-- This project is an unsupported proof of concept.
-- This project is a simplistic demonstration of how to use the Microsoft Graph APIs to register a FIDO2 security key with a CTAP client. 
+# EntraID-EOBO (Entra ID Enroll On Behalf Of) for YubiKeys.
+
+This is a fork from the original proof of concept code.  The code has been reworked to require Administrator permissions to run, this is because Microsoft removed the method of elevating up to Admin which was being used in the original script.  No other changes were made.
+
+This script will:
+- Connect to your Entra ID Tenant
+- Pull down a list of users in .csv format
+- Allow you to provison keys for that .csv file against your Entra ID Tenant.
+
+Yubico has released an official tool called YubiEnroll CLI which will allow you to create a credential for a user, however this is on a user-by-user basis, not a CSV.
+
 
 ## Overview
 Microsoft Graph APIs allow for customers to develop solutions that allow for FIDO2 security keys to be registered using an admin driven on-behalf-of registration flow. Customers may use this type of flow for a variety of reasons including:
