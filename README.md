@@ -7,7 +7,7 @@ This script will:
 - Pull down a list of users in .csv format
 - Allow you to provison keys for that .csv file against your Entra ID Tenant.
 
-There is a simple guide for use on Windows 11 here: [Implementation Guide](implementationguide.pdf)
+There is a simple guide for use on Windows 11 here: [Implementation Guide](EntraID-EOBO.pdf)
 
 Yubico has released an official tool called YubiEnroll CLI which will allow you to create a credential for a user, however this is on a user-by-user basis, not a CSV.  If you prefer to use that, it is on their official site: [YubiEnroll CLI](https://docs.yubico.com/software/yubikey/tools/yubienroll/about-yubienroll.html)
 
